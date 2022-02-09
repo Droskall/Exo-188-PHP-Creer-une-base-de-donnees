@@ -8,6 +8,8 @@
 
 // FIXME ==> Aucun code à fournir pour cette étape.
 
+// Bah en commentaire alors une fois la BDD creer nous alons dans operations et ensuite Supprimer la BDD (DROP)
+
 
 /**
  * 2. A l'aide de PHP
@@ -23,15 +25,20 @@
 // TODO Votre code ici bas.
 
 try {
-    $maConnexion = ........
+    $server = 'localhost';
+    $user = 'root';
+    $pass = '';
+    $maConnexion = new PDO("mysql:host=$server;charset=utf8", $user, $pass);
 
-    $request = "
-        Ma super requête SQL pour créer une base de données.
-    ";
+    //Pour créer la base de données
+    $request = "CREATE DATABASE intro_sql";
 
-    $maConnexion->une super méthode pour exécuter ma requete
+    //Pour supprimer la base de données
+    // $request = "DROP DATABASE intro_sql";
 
-    echo "La base de données intro_sql a bien été créée.";
+    $maConnexion->exec($request);
+
+    echo "La requête c'est bien déroulé.";
 }
 catch (PDOException $exception) {
     echo $exception->getMessage();
